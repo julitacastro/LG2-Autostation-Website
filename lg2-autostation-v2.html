@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LG2 Autostation — Premium Car Wash &amp; Detailing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #12141a;
+    --surface: #1a1d26;
+    --surface-2: #22262f;
+    --border: rgba(255,255,255,0.08);
+    --text: #f0f1f3;
+    --muted: #9ba1ad;
+    --accent: #d32f2f;
+    --accent-soft: #c62828;
+    --green: #22c55e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    padding-top: 72px; /* space for fixed header */
+  }
+  h1, h2, h3 { font-family: 'Oswald', sans-serif; letter-spacing: 0.02em; font-weight: 600; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; height: auto; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ========== FIXED HEADER (always frozen) ========== */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    height: 72px;
+    background: rgba(18, 20, 26, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .nav {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+  }
+  .brand .mark {
+    width: 26px;
+    height: 26px;
+    background: var(--accent);
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+  }
+  .navlinks {
+    display: flex;
+    gap: 28px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .navlinks a { transition: color 0.2s; }
+  .navlinks a:hover { color: var(--text); }
+  .navcta {
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .navcta:hover { background: var(--accent-soft); transform: translateY(-1px); }
+  @media (max-width: 760px) {
+    .navlinks { display: none; }
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg, rgba(18,20,26,0.92) 0%, rgba(18,20,26,0.7) 50%, rgba(18,20,26,0.45) 100%),
+      url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+  }
+  .hero .wrap { position: relative; z-index: 2; padding: 60px 24px; }
+  .eyebrow {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.08;
+    max-width: 14ch;
+    font-weight: 700;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    margin-top: 20px;
+    max-width: 46ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1.65;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-green {
+    background: var(--green);
+    color: #052e16;
+    box-shadow: 0 4px 24px rgba(34, 197, 94, 0.3);
+  }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text);
+    background: rgba(255,255,255,0.04);
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); }
+  .stat-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 56px;
+    flex-wrap: wrap;
+  }
+  .stat b {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.1rem;
+    display: block;
+    color: var(--text);
+  }
+  .stat span { color: var(--muted); font-size: 0.85rem; }
+
+  /* ========== SECTIONS ========== */
+  section { padding: 80px 0; }
+  .section-head {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-size: clamp(1.85rem, 3.5vw, 2.4rem);
+    max-width: 16ch;
+  }
+  .note { color: var(--muted); font-size: 0.85rem; max-width: 28ch; }
+
+  /* SERVICES */
+  .services { background: var(--surface); }
+  .menu { display: flex; flex-direction: column; gap: 36px; }
+  .mgroup h3 {
+    font-size: 1rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .mrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 20px;
+  }
+  .mrow:last-child { border-bottom: none; }
+  .mrow .name { font-size: 1.02rem; font-weight: 500; }
+  .mrow .desc { color: var(--muted); font-size: 0.85rem; margin-top: 3px; }
+  .mrow .price {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+
+  /* ABOUT */
+  .about .wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about p {
+    color: var(--muted);
+    margin-top: 18px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .about-panel {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+  .about-panel .big {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.4rem;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .about-panel .lead {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .about-panel .fine {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 14px;
+  }
+  @media (max-width: 800px) {
+    .about .wrap { grid-template-columns: 1fr; }
+  }
+
+  /* GALLERY */
+  .gallery { background: var(--surface); }
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .gal-tile {
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+    background: #0d0f14;
+  }
+  .gal-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gal-tile:hover img { transform: scale(1.05); }
+  .gal-tile .cap {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  }
+  @media (max-width: 700px) {
+    .gal-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  }
+
+  /* BRANCHES */
+  .brow {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr auto;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  .brow:first-of-type { border-top: 1px solid var(--border); }
+  .brow b { font-size: 1.02rem; }
+  .brow .addr { color: var(--muted); font-size: 0.88rem; margin-top: 4px; }
+  .brow .hrs { color: var(--muted); font-size: 0.9rem; }
+  .brow .tag {
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-align: right;
+  }
+  @media (max-width: 700px) {
+    .brow { grid-template-columns: 1fr; gap: 6px; }
+    .brow .tag { text-align: left; }
+  }
+
+  /* CONTACT */
+  .contact .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-copy p {
+    color: var(--muted);
+    margin-top: 16px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 40ch;
+  }
+  .clist { display: flex; flex-direction: column; gap: 12px; }
+  .clink {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .clink:hover {
+    border-color: rgba(211, 47, 47, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+  .clink .ic {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .ic.red { background: var(--accent); }
+  .ic.green { background: var(--green); }
+  .clink .ic svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; }
+  .ic.green svg { stroke: #052e16; }
+  .clink .t b { display: block; font-size: 0.98rem; }
+  .clink .t span { color: var(--muted); font-size: 0.84rem; }
+  @media (max-width: 800px) {
+    .contact .wrap { grid-template-columns: 1fr; }
+  }
+
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer p { color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<!-- FIXED HEADER — always stays on top -->
+<header>
+  <nav class="nav">
+    <div class="brand"><span class="mark"></span>LG2 AUTOSTATION</div>
+    <div class="navlinks">
+      <a href="#menu">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#branches">Branches</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="navcta" href="tel:+639754701086">Call Now</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="eyebrow">Since 2003 · Car Wash &amp; Auto Detailing</div>
+    <h1>The largest carwash &amp; detailing chain <span>in the Philippines.</span></h1>
+    <p>Car wash, interior &amp; exterior detailing, engine detailing, ceramic coating and PPF — done right, every time, for over 20 years.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-green" href="https://wa.me/639754701086" target="_blank" rel="noopener">Book on WhatsApp</a>
+      <a class="btn btn-outline" href="https://m.me/LG2Autostation" target="_blank" rel="noopener">Message on Messenger</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><b>20+</b><span>Years in service</span></div>
+      <div class="stat"><b>3</b><span>Branches</span></div>
+      <div class="stat"><b>17K</b><span>Followers &amp; growing</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Service Menu</div>
+        <h2>Full price list</h2>
+      </div>
+      <div class="note">Sample pricing for reference — confirm final rates before publishing.</div>
+    </div>
+    <div class="menu">
+      <div class="mgroup">
+        <h3>Car Wash</h3>
+        <div class="mrow"><div><div class="name">Basic Wash</div><div class="desc">Exterior wash &amp; dry</div></div><div class="price">₱150</div></div>
+        <div class="mrow"><div><div class="name">Wash + Vacuum</div><div class="desc">Exterior wash + interior vacuum</div></div><div class="price">₱250</div></div>
+      </div>
+      <div class="mgroup">
+        <h3>Interior Detailing</h3>
+        <div class="mrow"><div><div class="name">Standard Interior</div><div class="desc">Vacuum, wipe-down, dashboard &amp; console</div></div><div class="price">₱1,200</div></div>
+        <div class="mrow"><div><div class="name">Premium Interior</div><div class="desc">Deep shampoo, seats, carpets &amp; trim</div></div><div class="price">₱1,800</div></div>
+      </div>
+      <div class="mgroup">
+        <h3>Exterior Detailing</h3>
+        <div class="mrow"><div><div class="name">Standard Exterior</div><div class="desc">Wash, clay bar, wax</div></div><div class="price">₱1,500</div></div>
+        <div class="mrow"><div><div class="name">Premium Exterior</div><div class="desc">Polish, paint correction, sealant</div></div><div class="price">₱2,200</div></div>
+      </div>
+      <div class="mgroup">
+        <h3>Engine &amp; Protection</h3>
+        <div class="mrow"><div><div class="name">Engine Detailing</div><div class="desc">Safe degrease &amp; dress engine bay</div></div><div class="price">₱800</div></div>
+        <div class="mrow"><div><div class="name">Ceramic Coating — 1 Layer</div><div class="desc">Up to 1 year protection</div></div><div class="price">₱6,500</div></div>
+        <div class="mrow"><div><div class="name">Ceramic Coating — 3 Layer</div><div class="desc">Up to 3 years protection</div></div><div class="price">₱12,000</div></div>
+        <div class="mrow"><div><div class="name">PPF — Partial Front</div><div class="desc">Bumper, hood edge, mirrors</div></div><div class="price">₱15,000</div></div>
+        <div class="mrow"><div><div class="name">PPF — Full Body</div><div class="desc">Complete coverage</div></div><div class="price">₱65,000</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">About LG2</div>
+      <h2>Trusted with your car since 2003</h2>
+      <p>LG2 Autostation has spent more than two decades building a reputation for excellent, consistent service. What started as a single station has grown into the largest carwash and auto detailing chain in the Philippines — trusted by thousands of car owners who come back for the same reason every time: it's done properly.</p>
+    </div>
+    <div class="about-panel">
+      <div class="big">20+</div>
+      <div class="lead">Years providing excellent service</div>
+      <div class="fine">Car wash · Interior &amp; exterior detailing · Engine detailing · Ceramic coating · PPF</div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Gallery</div>
+        <h2>A look at the work</h2>
+      </div>
+      <div class="note">From foam wash to ceramic shine and full PPF protection.</div>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-tile">
+        <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80" alt="Foam hand wash" loading="lazy">
+        <div class="cap">Foam &amp; hand wash</div>
+      </div>
+      <div class="gal-tile">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80" alt="Interior detailing" loading="lazy">
+        <div class="cap">Interior detailing</div>
+      </div>
+      <div class="gal-tile">
+        <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=800&q=80" alt="Engine bay" loading="lazy">
+        <div class="cap">Engine bay cleaning</div>
+      </div>
+      <div class="gal-tile">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Ceramic coating" loading="lazy">
+        <div class="cap">Ceramic coating shine</div>
+      </div>
+      <div class="gal-tile">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="PPF finish" loading="lazy">
+        <div class="cap">PPF application</div>
+      </div>
+      <div class="gal-tile">
+        <img src="https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?auto=format&fit=crop&w=800&q=80" alt="Finished detail" loading="lazy">
+        <div class="cap">Before &amp; after</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="branches" id="branches">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Branches &amp; Hours</div>
+        <h2>Find your nearest LG2</h2>
+      </div>
+      <div class="note">Sample branches — replace with your actual locations.</div>
+    </div>
+    <div class="brow">
+      <div><b>LG2 Autostation — Quezon City</b><div class="addr">Main Branch, Commonwealth Ave, Quezon City</div></div>
+      <div class="hrs">Mon–Sun · 8:00 AM–7:00 PM</div>
+      <div class="tag">MAIN BRANCH</div>
+    </div>
+    <div class="brow">
+      <div><b>LG2 Autostation — Makati</b><div class="addr">Chino Roces Ave, Makati City</div></div>
+      <div class="hrs">Mon–Sun · 8:00 AM–7:00 PM</div>
+      <div class="tag">CITY BRANCH</div>
+    </div>
+    <div class="brow">
+      <div><b>LG2 Autostation — Cebu</b><div class="addr">Banilad, Cebu City</div></div>
+      <div class="hrs">Mon–Sat · 8:00 AM–6:00 PM</div>
+      <div class="tag">VISAYAS BRANCH</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-copy">
+      <div class="eyebrow">Book a Slot</div>
+      <h2>Ready for a car that looks brand new?</h2>
+      <p>Message us on WhatsApp or Messenger to book, or call/text us directly — we'll help you pick the right service and branch.</p>
+    </div>
+    <div class="clist">
+      <a class="clink" href="https://wa.me/639754701086" target="_blank" rel="noopener">
+        <div class="ic green">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="t"><b>Book on WhatsApp</b><span>+63 975 470 1086</span></div>
+      </a>
+      <a class="clink" href="https://m.me/LG2Autostation" target="_blank" rel="noopener">
+        <div class="ic red">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="t"><b>Message on Messenger</b><span>facebook.com/LG2Autostation</span></div>
+      </a>
+      <a class="clink" href="sms:+639754701086">
+        <div class="ic red">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="t"><b>Send an SMS</b><span>+63 975 470 1086</span></div>
+      </a>
+      <a class="clink" href="tel:+639754701086">
+        <div class="ic red">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="t"><b>Call us</b><span>+63 975 470 1086</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:1rem;"><span class="mark" style="width:22px;height:22px;"></span>LG2 AUTOSTATION</div>
+    <p>&copy; 2026 LG2 Autostation · Serving car owners across the Philippines since 2003</p>
+  </div>
+</footer>
+
+</body>
+</html>
