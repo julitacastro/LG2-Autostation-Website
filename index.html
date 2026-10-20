@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- JC-LG2-D90306DA | Website design and code (c) 2026 Julita Castro | all rights reserved | draft preview -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>LG2 Autostation — The Largest Carwash &amp; Auto Detailing Chain in the Philippines</title>
   <meta name="description"
@@ -2273,11 +2274,270 @@
         padding-bottom: 2px
       }
     }
+
+    /* ===== Find your branch (map) ===== */
+    .locfinder {
+      margin: 0 0 18px;
+      padding: 22px;
+      border: 1px solid rgba(234, 30, 39, .3);
+      background: linear-gradient(135deg, rgba(234, 30, 39, .10), rgba(255, 255, 255, .02) 55%, rgba(250, 51, 5, .05));
+      scroll-margin-top: 92px
+    }
+
+    .loc-head {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 14px
+    }
+
+    .loc-head .eyebrow {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--red)
+    }
+
+    .loc-head b {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: var(--cream);
+      font-weight: 600
+    }
+
+    .loc-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px
+    }
+
+    .loc-chip {
+      padding: 9px 14px;
+      font: 600 11px 'Outfit', sans-serif;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--slate);
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .14);
+      cursor: pointer;
+      transition: border-color .25s, color .25s, background .25s;
+      white-space: nowrap
+    }
+
+    .loc-chip:hover {
+      border-color: var(--red);
+      color: var(--red)
+    }
+
+    .loc-chip.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff
+    }
+
+    .loc-body {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 16px;
+      align-items: stretch
+    }
+
+    .loc-map {
+      position: relative;
+      min-height: 320px;
+      border: 1px solid var(--line);
+      background: #0a0a0d
+    }
+
+    .loc-map iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: saturate(.9) contrast(1.02)
+    }
+
+    .loc-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6px 4px
+    }
+
+    .loc-tag {
+      display: inline-block;
+      align-self: flex-start;
+      min-height: 0;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      padding: 3px 9px;
+      margin-bottom: 8px
+    }
+
+    .loc-tag:empty {
+      display: none
+    }
+
+    .loc-info h3 {
+      font-size: clamp(20px, 2.4vw, 26px);
+      margin-bottom: 8px
+    }
+
+    .loc-addr {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--cream);
+      margin-bottom: 8px
+    }
+
+    .loc-note {
+      font-size: 12px;
+      line-height: 1.55;
+      color: var(--slate);
+      margin-bottom: 16px
+    }
+
+    .loc-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .loc-actions .btn {
+      padding: 12px 14px;
+      font-size: 11px
+    }
+
+    .bitem.has-loc {
+      cursor: pointer
+    }
+
+    .bitem .viewmap {
+      display: block;
+      margin-top: 3px;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: #ff5a54
+    }
+
+    @media(max-width:820px) {
+      .loc-body {
+        grid-template-columns: 1fr
+      }
+
+      .loc-map {
+        min-height: 250px
+      }
+    }
+
+    @media(max-width:700px) {
+      .locfinder {
+        padding: 16px 14px
+      }
+
+      .loc-chips {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin: 0 -14px 14px;
+        padding: 0 14px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch
+      }
+
+      .loc-chips::-webkit-scrollbar {
+        display: none
+      }
+
+      .loc-actions .btn {
+        flex: 1 1 auto;
+        justify-content: center
+      }
+    }
+
+    /* ===== Draft banner + copyright credit ===== */
+    #draftBanner {
+      position: fixed;
+      left: 14px;
+      bottom: 14px;
+      z-index: 997;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      max-width: calc(100% - 28px);
+      padding: 8px 12px 8px 11px;
+      background: rgba(7, 7, 10, .92);
+      border: 1px solid rgba(234, 30, 39, .6);
+      border-left: 4px solid var(--red);
+      color: var(--cream);
+      font-size: 10.5px;
+      line-height: 1.35;
+      letter-spacing: .3px;
+      pointer-events: none;
+      backdrop-filter: blur(6px)
+    }
+
+    #draftBanner b {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow)
+    }
+
+    #draftBanner span {
+      color: #cfcbc4
+    }
+
+    #draftBanner .short {
+      display: none
+    }
+
+    .foot-credit {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 40px 22px;
+      font-size: 11px;
+      line-height: 1.6;
+      color: rgba(166, 164, 160, .6)
+    }
+
+    @media(max-width:820px) {
+      #draftBanner {
+        bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 9px 5px 8px;
+        font-size: 9.5px
+      }
+
+      #draftBanner .long {
+        display: none
+      }
+
+      #draftBanner .short {
+        display: inline
+      }
+
+      .foot-credit {
+        padding: 0 22px 24px
+      }
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- DRAFT PREVIEW BANNER — REMOVE THIS BLOCK AND ITS CSS ("#draftBanner") WHEN THE FINAL VERSION IS DELIVERED AFTER FULL PAYMENT -->
+  <div id="draftBanner" role="note"><b>Draft preview</b><span class="long">Design &amp; code &copy; Julita Castro
+      &middot; not for copying or reuse</span><span class="short">&copy; Julita Castro</span></div>
   <div id="progress"></div>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
@@ -2350,7 +2610,7 @@
         <div class="stat-lbl">Years in Service</div>
       </div>
       <div class="hero-stat">
-        <div class="stat-num">18</div>
+        <div class="stat-num">19</div>
         <div class="stat-lbl">Branches</div>
       </div>
       <div class="hero-stat">
@@ -2394,12 +2654,12 @@
         <div class="tag">Who We Are</div>
         <h2 class="title" style="max-width:12ch;">Trusted with your car since 2003</h2>
         <p>For over twenty years, LG2 Autostation has been providing excellent service — growing into the largest
-          carwash and auto detailing chain in the Philippines, with 18 branches today.</p>
+          carwash and auto detailing chain in the Philippines, with 19 branches today.</p>
         <p>From a quick car wash to ceramic coating and PPF, every branch is built to keep your car looking its best.
         </p>
         <div class="values">
           <div class="pill">🏁 Est. 2003</div>
-          <div class="pill">📍 18 Branches</div>
+          <div class="pill">📍 19 Branches</div>
           <div class="pill">🧽 Full-Service Detailing</div>
           <div class="pill">🛡️ Ceramic Coating &amp; PPF</div>
         </div>
@@ -2593,14 +2853,14 @@
     </svg>
     <div class="rl-bar"></div>
     <div class="rl-left"><span class="rl-logo"></span><span class="rl-est">est.2003</span></div>
-    <div class="rl-label">18 Branches</div>
+    <div class="rl-label">19 Branches</div>
   </div>
   <section id="branches" class="sec branch-section" style="border-top:1px solid var(--line)">
     <div class="wrap">
       <div class="head-row">
         <div>
           <div class="tag reveal">Our Branches</div>
-          <h2 class="title reveal">18 branches, one standard</h2>
+          <h2 class="title reveal">19 branches, one standard</h2>
         </div>
         <div class="foot-note reveal">Opening hours and addresses vary per branch — message or call us and we'll point
           you to the nearest one.</div>
@@ -2632,10 +2892,50 @@
           <figcaption><b>Sgt. Esguerra</b></figcaption>
         </figure>
       </div>
+      <div class="locfinder reveal" id="locfinder">
+        <div class="loc-head"><span class="eyebrow">Find your branch</span><b>Tap a branch to see it on the map</b>
+        </div>
+        <div class="loc-chips" role="tablist" aria-label="Branch locations"><button class="loc-chip active"
+            type="button" role="tab" aria-selected="true" data-id="ndomingo">N. Domingo</button><button class="loc-chip"
+            type="button" role="tab" aria-selected="false" data-id="congext">Congressional Ave. Ext.</button><button
+            class="loc-chip" type="button" role="tab" aria-selected="false" data-id="cong3">Congressional
+            3</button><button class="loc-chip" type="button" role="tab" aria-selected="false" data-id="visayas">Visayas
+            Ave.</button><button class="loc-chip" type="button" role="tab" aria-selected="false"
+            data-id="retiro">Retiro</button><button class="loc-chip" type="button" role="tab" aria-selected="false"
+            data-id="gandia">Scout Gandia</button><button class="loc-chip" type="button" role="tab"
+            aria-selected="false" data-id="blumentritt">Blumentritt</button><button class="loc-chip" type="button"
+            role="tab" aria-selected="false" data-id="marikina">Marikina</button></div>
+        <div class="loc-body">
+          <div class="loc-map"><iframe id="locMap" title="Map of the selected LG2 Autostation branch"
+              referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+          <div class="loc-info">
+            <span class="loc-tag" id="locTag">Main Branch</span>
+            <h3 id="locName">LG2 Autostation N. Domingo</h3>
+            <p class="loc-addr" id="locAddr">41A N. Domingo St., Brgy. Valencia, Quezon City, Philippines</p>
+            <p class="loc-note">Opening hours differ per branch &mdash; message or call to confirm before you drive
+              over.</p>
+            <div class="loc-actions">
+              <a class="btn btn-primary soc" id="locDir" href="#" target="_blank" rel="noopener"><svg
+                  viewBox="0 0 24 24">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                </svg>Get directions</a>
+              <a class="btn btn-ghost soc" id="locWaze" href="#" target="_blank" rel="noopener"><svg
+                  viewBox="0 0 24 24">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                </svg>Waze</a>
+              <a class="btn btn-ghost soc" href="tel:+639754701086"><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z" />
+                </svg>Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="blist collapsed reveal" id="blist">
-        <div class="bitem main">
+        <div class="bitem main has-loc" data-loc="ndomingo" role="button" tabindex="0"
+          aria-label="Show N. Domingo on the map">
           <div class="pin">📍</div>
-          <div><b>N. Domingo</b><small>Main Branch</small></div>
+          <div><b>N. Domingo</b><small>Main Branch</small><span class="viewmap">View map ›</span></div>
         </div>
         <div class="bitem">
           <div class="pin">📍</div>
@@ -2645,9 +2945,10 @@
           <div class="pin">📍</div>
           <div><b>Biñan</b><small>Laguna</small></div>
         </div>
-        <div class="bitem">
+        <div class="bitem has-loc" data-loc="blumentritt" role="button" tabindex="0"
+          aria-label="Show Blumentritt on the map">
           <div class="pin">📍</div>
-          <div><b>Blumentritt</b><small>Manila</small></div>
+          <div><b>Blumentritt</b><small>Manila</small><span class="viewmap">View map ›</span></div>
         </div>
         <div class="bitem">
           <div class="pin">📍</div>
@@ -2657,9 +2958,10 @@
           <div class="pin">📍</div>
           <div><b>Congressional 2</b></div>
         </div>
-        <div class="bitem">
+        <div class="bitem has-loc" data-loc="cong3" role="button" tabindex="0"
+          aria-label="Show Congressional 3 on the map">
           <div class="pin">📍</div>
-          <div><b>Congressional 3</b></div>
+          <div><b>Congressional 3</b><span class="viewmap">View map ›</span></div>
         </div>
         <div class="bitem">
           <div class="pin">📍</div>
@@ -2677,13 +2979,18 @@
           <div class="pin">📍</div>
           <div><b>Mapayapa Village</b></div>
         </div>
-        <div class="bitem">
+        <div class="bitem has-loc" data-loc="marikina" role="button" tabindex="0" aria-label="Show Marikina on the map">
           <div class="pin">📍</div>
-          <div><b>Retiro</b></div>
+          <div><b>Marikina</b><small>Xeland</small><span class="viewmap">View map ›</span></div>
         </div>
-        <div class="bitem">
+        <div class="bitem has-loc" data-loc="retiro" role="button" tabindex="0" aria-label="Show Retiro on the map">
           <div class="pin">📍</div>
-          <div><b>Scout Gandia</b></div>
+          <div><b>Retiro</b><span class="viewmap">View map ›</span></div>
+        </div>
+        <div class="bitem has-loc" data-loc="gandia" role="button" tabindex="0"
+          aria-label="Show Scout Gandia on the map">
+          <div class="pin">📍</div>
+          <div><b>Scout Gandia</b><span class="viewmap">View map ›</span></div>
         </div>
         <div class="bitem">
           <div class="pin">📍</div>
@@ -2697,9 +3004,10 @@
           <div class="pin">📍</div>
           <div><b>Sta. Maria</b><small>Bulacan</small></div>
         </div>
-        <div class="bitem">
+        <div class="bitem has-loc" data-loc="visayas" role="button" tabindex="0"
+          aria-label="Show Visayas Ave. on the map">
           <div class="pin">📍</div>
-          <div><b>Visayas Ave.</b></div>
+          <div><b>Visayas Ave.</b><span class="viewmap">View map ›</span></div>
         </div>
         <div class="bitem">
           <div class="pin">📍</div>
@@ -2707,7 +3015,7 @@
         </div>
       </div>
       <button class="blist-toggle" id="blistToggle" type="button" aria-expanded="false" aria-controls="blist"><span
-          class="lbl">Show all 18 branches</span> <span class="arr">▾</span></button>
+          class="lbl">Show all 19 branches</span> <span class="arr">▾</span></button>
     </div>
   </section>
 
@@ -2824,7 +3132,7 @@
         <div class="con-item">
           <div class="con-icon">📍</div>
           <div class="con-item-b"><span>Branches</span>
-            <p>18 locations — message us to find the nearest</p>
+            <p>19 locations — message us to find the nearest</p>
           </div>
         </div>
       </div>
@@ -2929,6 +3237,9 @@
           rel="noopener">facebook.com/lg2autostation</a> · <a href="https://www.instagram.com/lg2autostationph"
           target="_blank" rel="noopener">@lg2autostationph</a></span>
     </div>
+    <div class="foot-credit">Website design &amp; code &copy; 2026 Julita Castro. All rights reserved. Draft preview
+      &mdash; not licensed for copying, republishing or reuse. LG2 name, logo and photos belong to LG2 Autostation.
+    </div>
   </footer>
 
   <div class="mbar" aria-label="Quick contact">
@@ -2991,7 +3302,7 @@
     bt.addEventListener('click', () => {
       const c = bl.classList.toggle('collapsed');
       bt.setAttribute('aria-expanded', String(!c));
-      bt.querySelector('.lbl').textContent = c ? 'Show all 18 branches' : 'Show fewer branches';
+      bt.querySelector('.lbl').textContent = c ? 'Show all 19 branches' : 'Show fewer branches';
       bt.querySelector('.arr').textContent = c ? '▾' : '▴';
     });
     /* Hero numbers count up once */
@@ -3002,6 +3313,47 @@
         setTimeout(() => { const t0 = performance.now(); (function tick(now) { const p = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(end * e) + suf; if (p < 1) requestAnimationFrame(tick) })(t0) }, 950);
       });
     }
+
+    /* Build marker (do not remove): unique ID D90306DA */
+    const __JC_LG2_D90306DA_BUILD = { author: 'Julita Castro', project: 'LG2 Autostation draft preview', year: 2026, rights: 'all rights reserved' };
+    document.documentElement.setAttribute('data-build', 'JC-LG2-D90306DA');
+
+    /* ===== Find your branch: map follows the selected branch (pin comes from the address) ===== */
+    (function () {
+      const LOCS = {
+        ndomingo: { name: 'N. Domingo', tag: 'Main Branch', addr: '41A N. Domingo St., Brgy. Valencia, Quezon City, Philippines' },
+        congext: { name: 'Congressional Ave. Ext.', tag: '', addr: '26 Congressional Ave Ext, Quezon City, 1128 Metro Manila, Philippines' },
+        cong3: { name: 'Congressional 3', tag: '', addr: '1128 Congressional Ave, Quezon City, Metro Manila, Philippines' },
+        visayas: { name: 'Visayas Ave.', tag: '', addr: '20 Visayas Ext, Quezon City, 1128 Metro Manila, Philippines' },
+        retiro: { name: 'Retiro', tag: '', addr: 'N.S. Amoranto, corner Tabayoc, Quezon City, Metro Manila, Philippines' },
+        gandia: { name: 'Scout Gandia', tag: '', addr: '77 Sct. Gandia St, Diliman, Quezon City, 1103 Metro Manila, Philippines' },
+        blumentritt: { name: 'Blumentritt', tag: '', addr: '302 M.A. Reyes, Manila, Kalakhang Maynila, Philippines' },
+        marikina: { name: 'Marikina', tag: 'Xeland', addr: 'LS1-04, Xeland, Mayor Gil Fernando Ave, Marikina, 1800 Metro Manila, Philippines' },
+      };
+      const box = document.getElementById('locfinder'); if (!box) return;
+      const chips = [...box.querySelectorAll('.loc-chip')], frame = document.getElementById('locMap'), tag = document.getElementById('locTag'),
+        nm = document.getElementById('locName'), ad = document.getElementById('locAddr'), dir = document.getElementById('locDir'), waze = document.getElementById('locWaze');
+      let visible = false, pending = '';
+      function select(id, scroll) {
+        const L = LOCS[id]; if (!L) return;
+        chips.forEach(c => { const on = c.dataset.id === id; c.classList.toggle('active', on); c.setAttribute('aria-selected', String(on)) });
+        tag.textContent = L.tag; nm.textContent = 'LG2 Autostation ' + L.name; ad.textContent = L.addr;
+        const q = 'LG2 Autostation, ' + L.addr;
+        dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(q) + '&travelmode=driving';
+        waze.href = 'https://waze.com/ul?q=' + encodeURIComponent(q) + '&navigate=yes';
+        pending = 'https://www.google.com/maps?q=' + encodeURIComponent(q) + '&z=17&output=embed';
+        if (visible) frame.src = pending;
+        if (scroll) box.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      }
+      chips.forEach(c => c.addEventListener('click', () => select(c.dataset.id)));
+      document.querySelectorAll('.bitem[data-loc]').forEach(t => {
+        const go = () => select(t.dataset.loc, true);
+        t.addEventListener('click', go);
+        t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go() } });
+      });
+      select(chips[0].dataset.id);
+      new IntersectionObserver((es, o) => { es.forEach(e => { if (e.isIntersecting) { visible = true; frame.src = pending; o.disconnect() } }) }, { rootMargin: '400px' }).observe(box);
+    })();
   </script>
 </body>
 
